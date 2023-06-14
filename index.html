@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- aca conectamos nuestra carpeta de css de styles-->
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Bar Los Compitas</title>
+</head>
+<body>
+    <section>
+        <h1>Bienvenido</h1>
+        <h2>Bar Los Compitas</h2>
+        <button id="logout">Ingresar</button>
+    </section>
+    <!-- desde aca conectamos a nuestros archivos javaScritp-->
+    <!-- Tambien conectamos nuestro JavaScript con la API Fetch y jsonplaceholder/user-->
+    <script src="js/index.js">
+        let url = 'https://jsonplaceholder.typicode.com/users/';
+          fetch(url)
+              .then( response => response.json() )
+              .then( data => mostrarData(data) )
+              .catch( error => console.log(error) )
+  
+          const mostrarData = (data) => {
+              console.log(data)
+              let body = ""
+              for (var i = 0; i < data.length; i++) {      
+                 body+=`<tr><td>${data[i].name}</td><td>${data[i].email}</td><td>${data[i].password}</td></tr>`
+              }
+              document.getElementById('data').innerHTML = body
+              //console.log(body)
+          }
+           
+      </script>>
+</body>
+</html>
